@@ -2,6 +2,7 @@ module L.L2.Frontend.Syntax where
 
 import Utils.Value
 import Utils.Var
+import Utils.Pretty
 
 -- definition of the syntax of L2
 -- programs
@@ -27,10 +28,9 @@ data S2
 data E2
   = LVal Value
   | LVar Var
+  | LString String
   | LAdd E2 E2
   | LMinus E2 E2
   | LMul E2 E2
   | LDiv E2 E2
   deriving (Eq, Ord, Show)
-
-

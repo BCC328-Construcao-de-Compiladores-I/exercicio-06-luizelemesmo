@@ -1,4 +1,4 @@
-
+module Main where
 
 import L.L3.Frontend.Syntax
 import Utils.Pretty

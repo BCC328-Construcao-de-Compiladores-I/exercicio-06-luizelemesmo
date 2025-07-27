@@ -1,6 +1,6 @@
 {
 {-# OPTIONS_GHC -Wno-name-shadowing #-}
-module L.L1.Frontend.Lexer (Token (..), Lexeme (..), lexer) where 
+module L.L2.Frontend.Lexer (Token (..), Lexeme (..), lexer) where 
 }
 
 %wrapper "posn"
@@ -16,6 +16,9 @@ $white = [\ \t\n\r]
 tokens :-
   $white+          ;
   "//" [^\n]*      ;
+  "def"            { simpleToken TDef }
+  "in"             { simpleToken TIn }
+  "end"            { simpleToken TEnd }
   "read"           { simpleToken TRead } 
   "print"          { simpleToken TPrint } 
   ":="             { simpleToken TAssign } 
@@ -35,7 +38,10 @@ tokens :-
 data Token = Token { pos :: (Int, Int), lexeme :: Lexeme } deriving (Eq, Ord, Show)
 
 data Lexeme
-  = TIdent String
+  = TDef
+  | TIn
+  | TEnd
+  | TIdent String
   | TNumber Int
   | TString String
   | TAssign
